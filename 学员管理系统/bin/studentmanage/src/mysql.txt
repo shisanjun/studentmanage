@@ -1,0 +1,60 @@
+mysql> select * from role;
++----+------+
+| id | name |
++----+------+
+|  1 | ??   |
++----+------+
+1 row in set (0.00 sec)
+
+mysql> show variables like 'char%';
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | latin1                     |
+| character_set_connection | latin1                     |
+| character_set_database   | utf8                       |
+| character_set_filesystem | binary                     |
+| character_set_results    | latin1                     |
+| character_set_server     | latin1                     |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+8 rows in set (0.00 sec)
+
+mysql> set character_set_results=gb18030;
+ERROR 1115 (42000): Unknown character set: 'gb18030'
+mysql> set character_set_results=gb2312;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from role;
++----+------+
+| id | name |
++----+------+
+|  1 | ½²ʦ |
++----+------+
+1 row in set (0.01 sec)
+
+mysql> select * from role;
++----+------+
+| id | name |
++----+------+
+|  1 | 讲师 |
++----+------+
+1 row in set (0.00 sec)
+
+mysql> set character_set_results=utf8;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from role;
++----+--------+
+| id | name   |
++----+--------+
+|  1 | 讲师 |
++----+--------+
+1 row in set (0.00 sec)
